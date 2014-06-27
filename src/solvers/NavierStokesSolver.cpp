@@ -27,9 +27,9 @@ PetscErrorCode NavierStokesSolver<dim>::initializeCommon()
 	ierr = createVecs(); CHKERRQ(ierr);
 	
 	initializeMeshSpacings();
-/*	ierr = initializeFluxes(); CHKERRQ(ierr);
+	ierr = initializeFluxes(); CHKERRQ(ierr);
 	ierr = initializeLambda(); CHKERRQ(ierr);
-	ierr = updateBoundaryGhosts(); CHKERRQ(ierr);
+/*	ierr = updateBoundaryGhosts(); CHKERRQ(ierr);
 
 	ierr = createLocalToGlobalMappingsFluxes(); CHKERRQ(ierr);
 	ierr = createLocalToGlobalMappingsLambda(); CHKERRQ(ierr);
@@ -217,14 +217,14 @@ void NavierStokesSolver<dim>::countNumNonZeros(PetscInt *cols, size_t numCols, P
 #include "NavierStokes/createDMs.inl"
 #include "NavierStokes/createVecs.inl"
 #include "NavierStokes/initializeMeshSpacings.inl"
+#include "NavierStokes/initializeFluxes.inl"
+#include "NavierStokes/readFluxes.inl"
+#include "NavierStokes/initializeLambda.inl"
 /*
 #include "NavierStokes/createKSPs.inl"
 #include "NavierStokes/setNullSpace.inl"
 #include "NavierStokes/createLocalToGlobalMappingsFluxes.inl"
 #include "NavierStokes/createLocalToGlobalMappingsLambda.inl"
-#include "NavierStokes/initializeFluxes.inl"
-#include "NavierStokes/readFluxes.inl"
-#include "NavierStokes/initializeLambda.inl"
 #include "NavierStokes/updateBoundaryGhosts.inl"
 #include "NavierStokes/calculateExplicitTerms.inl"
 #include "NavierStokes/generateDiagonalMatrices.inl"

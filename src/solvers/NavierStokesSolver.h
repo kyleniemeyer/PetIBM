@@ -61,10 +61,10 @@ protected:
 	virtual PetscErrorCode createDMs();
 	virtual PetscErrorCode createVecs();
 	void initializeMeshSpacings();
-	/*PetscErrorCode createKSPs();
 	PetscErrorCode initializeFluxes();
-	PetscErrorCode readFluxes(Vec qxGlobal, Vec qyGlobal, Vec qzGlobal=PETSC_NULL);
+	PetscErrorCode readFluxes();
 	virtual PetscErrorCode initializeLambda();
+	/*PetscErrorCode createKSPs();
 	PetscErrorCode createLocalToGlobalMappingsFluxes();
 	PetscErrorCode createLocalToGlobalMappingsLambda();
 	PetscErrorCode updateBoundaryGhosts();
