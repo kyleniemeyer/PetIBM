@@ -1,4 +1,4 @@
-#include "TairaColoniusSolver.h"
+/*#include "TairaColoniusSolver.h"
 #include "yaml-cpp/yaml.h"
 #include <petscdmcomposite.h>
 #include <iostream>
@@ -110,4 +110,4 @@ PetscReal TairaColoniusSolver<dim>::delta(PetscReal x, PetscReal y, PetscReal z,
 #include "TairaColonius/writeForces.inl"
 
 template class TairaColoniusSolver<2>;
-template class TairaColoniusSolver<3>;
+template class TairaColoniusSolver<3>;*/

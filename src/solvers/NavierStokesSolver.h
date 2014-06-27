@@ -29,15 +29,11 @@ protected:
 	std::ofstream iterationsFile;
 	
 	DM  pda,
-	    uda,
-	    vda,
-	    wda,
+	    qda,
 	    qPack,
 	    lambdaPack;
 	
-	Vec qxLocal,
-	    qyLocal,
-	    qzLocal;
+	Vec qLocal;
 
 	Vec uMapping,
 	    vMapping,
@@ -64,8 +60,8 @@ protected:
 	PetscErrorCode initializeCommon();
 	virtual PetscErrorCode createDMs();
 	virtual PetscErrorCode createVecs();
-	PetscErrorCode createKSPs();
 	void initializeMeshSpacings();
+	/*PetscErrorCode createKSPs();
 	PetscErrorCode initializeFluxes();
 	PetscErrorCode readFluxes(Vec qxGlobal, Vec qyGlobal, Vec qzGlobal=PETSC_NULL);
 	virtual PetscErrorCode initializeLambda();
@@ -87,17 +83,17 @@ protected:
 	PetscErrorCode solvePoissonSystem();
 	PetscErrorCode projectionStep();
 	PetscErrorCode writeFluxes();
-	virtual PetscErrorCode writeLambda();
+	virtual PetscErrorCode writeLambda();*/
 	
 public:
 	virtual PetscErrorCode initialize();
 	virtual PetscErrorCode finalize();
-	PetscErrorCode stepTime();
+	/*PetscErrorCode stepTime();
 	virtual PetscErrorCode writeData();
 	PetscErrorCode writeSimulationInfo();
 	PetscErrorCode writeGrid();
 	PetscBool savePoint();
-	PetscBool finished();
+	PetscBool finished();*/
 	
 	/**
 	* @brief Give the name of the current solver 
@@ -118,15 +114,10 @@ public:
 		timeStep  = simParams->startStep;
 		// DMs
 		pda = PETSC_NULL;
-		uda = PETSC_NULL;
-		vda = PETSC_NULL;
-		wda = PETSC_NULL;
-		qPack   = PETSC_NULL;
+		qda = PETSC_NULL;
 		lambdaPack = PETSC_NULL;
 		// Vecs
-		qxLocal  = PETSC_NULL;
-		qyLocal  = PETSC_NULL;
-		qzLocal  = PETSC_NULL;
+		qLocal   = PETSC_NULL;
 		q        = PETSC_NULL;
 		qStar    = PETSC_NULL;
 		H        = PETSC_NULL;

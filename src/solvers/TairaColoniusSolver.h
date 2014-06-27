@@ -1,6 +1,6 @@
 #if !defined(TAIRA_COLONIUS_SOLVER_H)
 #define TAIRA_COLONIUS_SOLVER_H
-
+#if 0
 #include "NavierStokesSolver.h"
 
 template <PetscInt dim>
@@ -63,5 +63,5 @@ public:
 		return "Taira and Colonius";
 	}
 };
-
+#endif
 #endif

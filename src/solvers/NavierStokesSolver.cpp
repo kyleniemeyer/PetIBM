@@ -27,7 +27,7 @@ PetscErrorCode NavierStokesSolver<dim>::initializeCommon()
 	ierr = createVecs(); CHKERRQ(ierr);
 	
 	initializeMeshSpacings();
-	ierr = initializeFluxes(); CHKERRQ(ierr);
+/*	ierr = initializeFluxes(); CHKERRQ(ierr);
 	ierr = initializeLambda(); CHKERRQ(ierr);
 	ierr = updateBoundaryGhosts(); CHKERRQ(ierr);
 
@@ -40,7 +40,7 @@ PetscErrorCode NavierStokesSolver<dim>::initializeCommon()
 	ierr = generateQTBNQ(); CHKERRQ(ierr);
 	ierr = createKSPs(); CHKERRQ(ierr);
 	ierr = setNullSpace(); CHKERRQ(ierr);
-
+*/
 	return 0;
 }
 
@@ -51,19 +51,14 @@ PetscErrorCode NavierStokesSolver<dim>::finalize()
 	
 	// DMs
 	if(pda!=PETSC_NULL) {ierr = DMDestroy(&pda); CHKERRQ(ierr);}
-	if(uda!=PETSC_NULL) {ierr = DMDestroy(&uda); CHKERRQ(ierr);}
-	if(vda!=PETSC_NULL) {ierr = DMDestroy(&vda); CHKERRQ(ierr);}
-	if(wda!=PETSC_NULL) {ierr = DMDestroy(&wda); CHKERRQ(ierr);}
-	if(qPack!=PETSC_NULL){ierr = DMDestroy(&qPack); CHKERRQ(ierr);}
+	if(qda!=PETSC_NULL) {ierr = DMDestroy(&qda); CHKERRQ(ierr);}
 	if(lambdaPack!=PETSC_NULL){ierr = DMDestroy(&lambdaPack); CHKERRQ(ierr);}
 	
 	// Vecs
 	if(q!=PETSC_NULL)    {ierr = VecDestroy(&q); CHKERRQ(ierr);}
 	if(qStar!=PETSC_NULL){ierr = VecDestroy(&qStar); CHKERRQ(ierr);}
 	
-	if(qxLocal!=PETSC_NULL){ierr = VecDestroy(&qxLocal); CHKERRQ(ierr);}
-	if(qyLocal!=PETSC_NULL){ierr = VecDestroy(&qyLocal); CHKERRQ(ierr);}
-	if(qzLocal!=PETSC_NULL){ierr = VecDestroy(&qzLocal); CHKERRQ(ierr);}
+	if(qLocal!=PETSC_NULL){ierr = VecDestroy(&qLocal); CHKERRQ(ierr);}
 
 	if(H!=PETSC_NULL)   {ierr = VecDestroy(&H); CHKERRQ(ierr);}
 	if(rn!=PETSC_NULL)  {ierr = VecDestroy(&rn); CHKERRQ(ierr);}
@@ -102,7 +97,7 @@ PetscErrorCode NavierStokesSolver<dim>::finalize()
 
 	return 0;
 }
-
+/*
 template <PetscInt dim>
 PetscErrorCode NavierStokesSolver<dim>::generateRHS1()
 {
@@ -218,14 +213,15 @@ void NavierStokesSolver<dim>::countNumNonZeros(PetscInt *cols, size_t numCols, P
 		(cols[i]>=rowStart && cols[i]<rowEnd)? d_nnz++ : o_nnz++;
 	}
 }
-
+*/
 #include "NavierStokes/createDMs.inl"
 #include "NavierStokes/createVecs.inl"
+#include "NavierStokes/initializeMeshSpacings.inl"
+/*
 #include "NavierStokes/createKSPs.inl"
 #include "NavierStokes/setNullSpace.inl"
 #include "NavierStokes/createLocalToGlobalMappingsFluxes.inl"
 #include "NavierStokes/createLocalToGlobalMappingsLambda.inl"
-#include "NavierStokes/initializeMeshSpacings.inl"
 #include "NavierStokes/initializeFluxes.inl"
 #include "NavierStokes/readFluxes.inl"
 #include "NavierStokes/initializeLambda.inl"
@@ -241,6 +237,7 @@ void NavierStokesSolver<dim>::countNumNonZeros(PetscInt *cols, size_t numCols, P
 #include "NavierStokes/writeFluxes.inl"
 #include "NavierStokes/writeLambda.inl"
 #include "NavierStokes/writeData.inl"
+*/
 
 template class NavierStokesSolver<2>;
 template class NavierStokesSolver<3>;
