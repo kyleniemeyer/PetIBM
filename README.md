@@ -4,13 +4,15 @@ PetIBM - A PETSc-based Immersed Boundary Method code
 Installation instructions
 -------------------------
 
+The following instructions are specific to the branch `petsc-3.4-compatible`.
+
 ### Dependencies
 
 Ensure that the following dependencies are installed before compiling PetIBM:
 
 * GNU C++ Compiler(`g++`) version 4.6 or above
 * Git distributed version control system (`git`)
-* PETSc version 3.4 (currently does not work with 3.5)
+* PETSc version 3.4
 
 PetIBM has been tested and run on Ubuntu 12.04 and Mac OS X 10.9.
 
